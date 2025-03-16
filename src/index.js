@@ -11,22 +11,22 @@ dotenv.config({
 
 
 connectDB()
-.then(()=>{
-    console.log('\n mongodb connected to express server')
-    app.listen(process.env.PORT,()=>{
-        console.log(`connecting to express server on port :: ${process.env.PORT}`)
-    })
+    .then(() => {
+        console.log('\n mongodb connected to express server')
+        app.listen(process.env.PORT, () => {
+            console.log(`connecting to express server on port :: ${process.env.PORT}`)
+        })
 
-    app.on('error',(err)=>{
-        console.log(`error connecting to express server on port :: ${process.env.PORT}`)
+        app.on('error', (err) => {
+            console.log(`error connecting to express server on port :: ${process.env.PORT}`)
+            process.exit(1)
+        })
+
+    })
+    .catch((err) => {
+        console.log(`error for mongodb connection :: ${err}`)
         process.exit(1)
     })
-        
-})
-.catch((err)=>{
-    console.log(`error for mongodb connection :: ${err}`)
-    process.exit(1)
-})
 
 
 
